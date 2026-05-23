@@ -255,9 +255,6 @@ Render images
 - Selection flow
 - Save UI
 - Routing
-
-### In Progress
-
 - Cloudinary storage migration
 - Saved meme persistence
 
