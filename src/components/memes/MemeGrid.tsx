@@ -17,7 +17,7 @@ export function MemeGrid({
 
             {
                 memes.map(
-                    (meme,i)=>(
+                    (meme)=>(
 
                         <MemeCard
                             meme={meme}
