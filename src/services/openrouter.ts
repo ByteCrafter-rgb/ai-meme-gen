@@ -4,20 +4,13 @@ export async function generateOneMeme(
 ){
 
     const prompts = [
-
-        "Turn this into a funny internet meme with witty caption.",
-
-        "Generate absurd GenZ humor meme from this image.",
-
-        "Create a sarcastic meme from this image.",
-
-        "Make a wholesome funny meme.",
-
-        "Create a brainrot meme caption style image.",
-
-        "Turn this into a viral reaction meme."
-
-    ];
+    "Turn this image into a lazy non-academic nerd meme.",
+    "Turn this image into a frustrated corporate guy meme.",
+    "Turn this image into a pure brainrot meme.",
+    "Turn this image into a chaotic GenZ humor meme.",
+    "Turn this image into a passive-aggressive office worker meme.",
+    "Turn this image into an over-engineered tech nerd meme."
+];
 
     const response =
     await fetch(
