@@ -1,73 +1,309 @@
-# React + TypeScript + Vite
+# MemeAI 🎭
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+AI-powered meme generator built with **React + TypeScript + Vite**.  
+Upload an image, generate multiple meme variations using an image LLM, choose your favorite, and save it to your collection.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- 📤 Image upload + preview
+- 🤖 AI meme generation via OpenRouter image models
+- 🖼 Generate multiple meme variations
+- ✨ Loading skeleton while generation runs
+- ✅ Meme selection workflow
+- 💾 Save selected memes
+- 📚 Saved meme history page
+- 🎨 Planned caption editor + canvas tools
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Frontend
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### AI
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- OpenRouter API
+- Gemini image generation models
+
+### Planned Storage
+
+- Cloudinary
+
+---
+
+## Project Structure
+
+```txt
+src/
+
+components/
+│
+├── sections/
+│   ├── Navbar.tsx
+│   └── middle/
+│       ├── HeroSection.tsx
+│       └── UploadSection.tsx
+│
+└── memes/
+    ├── CurrentGeneration.tsx
+    ├── MemeGrid.tsx
+    ├── MemeCard.tsx
+    ├── RegenerateButton.tsx
+    ├── LoadingGrid.tsx
+    │
+    └── history/
+        ├── HistorySection.tsx
+        ├── HistoryGrid.tsx
+        └── HistoryCard.tsx
+
+
+pages/
+├── Home.tsx
+├── MyMemes.tsx
+└── Saved.tsx
+
+
+services/
+├── memeAPI.ts
+├── openrouter.ts
+├── imageUtils.ts
+├── history.ts
+└── cloudinary.ts (planned)
+
+
+types/
+└── meme.ts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## App Flow
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```txt
+Upload image
+
+↓
+
+Preview image
+
+↓
+
+Generate
+
+↓
+
+Route → /my-memes
+
+↓
+
+Loading skeleton
+
+↓
+
+AI generates memes
+
+↓
+
+Display generated memes
+
+↓
+
+User selects meme
+
+↓
+
+Save selection
+
+↓
+
+Route → /saved
+
+↓
+
+History thumbnails
 ```
+
+---
+
+## Routes
+
+### Home
+
+```txt
+/
+```
+
+Features:
+
+- Hero section
+- Upload section
+- Image preview
+- Generate button
+
+---
+
+### My Memes
+
+```txt
+/my-memes
+```
+
+Features:
+
+- Loading grid
+- Current generation
+- Meme selection
+- Save workflow
+- Regenerate button
+
+---
+
+### Saved
+
+```txt
+/saved
+```
+
+Features:
+
+- Saved meme history
+- Thumbnail previews
+
+---
+
+## Environment Variables
+
+Create:
+
+```bash
+.env
+```
+
+Add:
+
+```env
+VITE_OPENROUTER_API_KEY=YOUR_KEY
+```
+
+---
+
+## Installation
+
+Clone:
+
+```bash
+git clone <repo-url>
+```
+
+Install:
+
+```bash
+npm install
+```
+
+Run:
+
+```bash
+npm run dev
+```
+
+---
+
+## AI Generation
+
+Current flow:
+
+```txt
+Uploaded image
+
+↓
+
+Convert to base64
+
+↓
+
+OpenRouter image API
+
+↓
+
+Generate meme variations
+
+↓
+
+Render images
+```
+
+---
+
+## Current Progress
+
+### Completed
+
+- Upload flow
+- Image preview
+- API integration
+- AI image rendering
+- Multi-meme generation
+- Selection flow
+- Save UI
+- Routing
+
+### In Progress
+
+- Cloudinary storage migration
+- Saved meme persistence
+
+### Planned
+
+- Caption editor
+- Meme canvas
+- Font customization
+- Template swapping
+- Humor styles
+- Regenerate variants
+- Download support
+- Share support
+
+---
+
+## Future Vision
+
+```txt
+Upload
+
+↓
+
+Generate
+
+↓
+
+Select
+
+↓
+
+Edit caption
+
+↓
+
+Customize meme
+
+↓
+
+Save
+
+↓
+
+Share
+```
+
+---
+
+Built with memes and questionable humor.
